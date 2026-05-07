@@ -6,12 +6,12 @@ import { googleAI } from '@genkit-ai/google-genai';
  * Protects the application from rate limits by automatically rotating 5 API Keys.
  */
 const GEMINI_KEYS = [
-  'AIzaSyD322botPVtW_XFxiy0c49ATAXAgVA2mBs',
-  'AIzaSyD4EOt7Pic7IRTLkOaNv3ReX-c3Dj6PfFs',
-  'AIzaSyDJVhruvmFbgL8jEByyMCztB0lMdXYwFIs',
-  'AIzaSyC60_6CRZOqVp9VbaFTCn5t1QdDlSr1PCI',
-  'AIzaSyC5Pr2k6Twe36YtmPknlDmFjCvbnb5q12I'
-];
+  process.env.GEMINI_API_KEY_1,
+  process.env.GEMINI_API_KEY_2,
+  process.env.GEMINI_API_KEY_3,
+  process.env.GEMINI_API_KEY_4,
+  process.env.GEMINI_API_KEY_5,
+].filter(Boolean) as string[];
 
 // Initialize using the first key by default
 export const ai = genkit({
@@ -38,14 +38,17 @@ export async function executeWithRotation(fn: (aiInstance: any) => Promise<any>)
     } catch (error: any) {
       lastError = error;
       const errorMessage = error.message?.toLowerCase() || "";
-      const isRateLimit = errorMessage.includes('429') || 
-                          errorMessage.includes('quota') || 
+      const isRotatable = errorMessage.includes('429') ||
+                          errorMessage.includes('quota') ||
                           errorMessage.includes('rate limit') ||
+                          errorMessage.includes('api key expired') ||
+                          errorMessage.includes('expired') ||
                           error.status === 429 ||
+                          error.status === 400 ||
                           (error as any).code === 429;
 
-      if (isRateLimit && i < GEMINI_KEYS.length - 1) {
-        console.warn(`Key ${i + 1} rate limited. Rotating to key ${i + 2}...`);
+      if (isRotatable && i < GEMINI_KEYS.length - 1) {
+        console.warn(`Key ${i + 1} failed (${error.status ?? 'unknown'}). Rotating to key ${i + 2}...`);
         continue;
       }
       // If it's the last key or not a rate limit, throw the error
