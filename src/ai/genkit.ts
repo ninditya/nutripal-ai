@@ -10,7 +10,6 @@ const GEMINI_KEYS = [
   process.env.GEMINI_API_KEY_2,
   process.env.GEMINI_API_KEY_3,
   process.env.GEMINI_API_KEY_4,
-  process.env.GEMINI_API_KEY_5,
 ].filter(Boolean) as string[];
 
 // Initialize using the first key by default

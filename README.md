@@ -48,8 +48,8 @@ Discover new meal options and generate complete meal plans with powerful AI tool
 
 ## Tech Stack & Architecture
 
-- **Frontend**: Next.js, React, Tailwind CSS, and ShadCN UI for a responsive, modern, and component-based interface.
-- **Backend & Database**: Firebase, utilizing Firestore for a secure, real-time database and Firebase Authentication for user management.
-- **AI Integration**: Google's Genkit framework powers all generative AI features, with a key rotation system in place for reliability and to manage API rate limits.
-- **Deployment**: Hosted on Firebase with a CI/CD pipeline for automated, reliable deployments.
-- **Security**: The application is built with security in mind, featuring Firestore Security Rules to protect user data and a global error handling system for permission issues.
+- **Frontend**: Next.js 15 (Turbopack), React 19, Tailwind CSS, and ShadCN UI for a responsive, modern, and component-based interface.
+- **Backend & Database**: Supabase — PostgreSQL database with real-time subscriptions and Supabase Auth for anonymous user management.
+- **AI Integration**: Google's Genkit framework powers all generative AI features (Gemini 2.5 Flash), with a 4-key rotation system in place for reliability and to manage API rate limits.
+- **State Management**: Custom React hooks (`useProfile`, `useDailyLog`, `useMeals`, `useDailyLogs`) backed by Supabase real-time channels for live data sync.
+- **Security**: Row-level data access enforced at the Supabase layer. Environment variables separate public and server-side credentials.
