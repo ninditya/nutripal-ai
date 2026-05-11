@@ -1,55 +1,340 @@
-# NutriPal - Your AI-Powered Nutrition Partner
+# 🥗 NutriPal — Your AI-Powered Nutrition Partner
 
-Welcome to NutriPal, a sophisticated, AI-driven web application designed to be your personal nutrition and meal-planning assistant. Built with a production-ready, secure, and scalable architecture, NutriPal helps you take control of your health with ease and precision.
+> Web app AI-driven untuk personal nutrition tracking & meal planning. Dibangun dengan Next.js 15, Supabase, dan Google Gemini untuk memberikan pengalaman nutrisi yang personal, presisi, dan menyenangkan.
 
-## The User Journey: A Step-by-Step Flow
+[![Next.js](https://img.shields.io/badge/Next.js-15-000000.svg?logo=next.js&logoColor=white)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB.svg?logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-99.3%25-3178C6.svg?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC.svg?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Supabase](https://img.shields.io/badge/Supabase-DB%20%2B%20Auth-3ECF8E.svg?logo=supabase&logoColor=white)](https://supabase.com/)
+[![Gemini](https://img.shields.io/badge/Gemini-2.5%20Flash-4285F4.svg?logo=google&logoColor=white)](https://ai.google.dev/)
 
-This guide walks you through the entire NutriPal experience, from initial setup to daily use.
+---
 
-### 1. Getting Started: Secure Login & Onboarding
-- **Secure Demo Login**: The journey begins at a secure login screen. For this demo, a one-click sign-in provides access, simulating a Google login process and automatically connecting you to the app's ecosystem (mock delivery and fitness apps).
-- **Personalized Onboarding**: First-time users are guided through a seamless onboarding process. You'll input key biometric data:
-    - Gender, Age, Weight, and Height.
-    - The app instantly calculates your **BMI** and identifies your **BMI category** (e.g., Ideal, Overweight).
-    - You can set **Health Markers** like dietary restrictions (Vegetarian, Gluten-free) and list any known **food allergies**.
-- This initial setup is crucial as it personalizes your entire experience, from calorie targets to AI-generated recommendations.
+## 📖 Tentang Project
 
-### 2. The Dashboard (Today): Your Daily Command Center
-The main dashboard provides a comprehensive, at-a-glance overview of your daily nutritional journey.
-- **Energy Balance & Macro Tracking**: Visualize your daily calorie consumption against your target. A dynamic progress bar breaks down your intake into protein, carbs, and fat.
-- **Hydration & Active Burn**: Easily log your water intake. The "Active Burn" monitor shows calories burned, and when you have a highly active day, the flame icon turns red, giving you access to an AI-generated recovery meal plan for the next day.
-- **Weekly Macro Trends**: A chart visualizes your calorie intake (by macro) and calories burned over the last seven days, helping you spot trends.
-- **Daily Food Record**: A detailed log of all your consumed and planned meals for the day. You can expand each meal to see expert AI insights, ingredients, and health scores.
+**NutriPal** adalah aplikasi web modern yang menggabungkan **AI generatif** dengan **real-time data tracking** untuk membantu pengguna mengelola pola makan dan kesehatan mereka. Aplikasi ini menyediakan personal nutrition assistant yang dapat:
 
-### 3. Planning Your Meals (Plan)
-Your central hub for organizing your meals.
-- **Daily Scheduling**: Navigate through days to plan your meals in advance.
-- **Add Custom Meals**: Add a meal manually with specific nutritional info, or let the AI analyze the meal name and ingredients to automatically calculate all nutritional data, including a health score and cooking instructions.
-- **View Recipes**: For any meal in your schedule, you can view the full recipe, including ingredients and step-by-step instructions.
+- 📸 **Mengenali makanan dari foto** dan langsung memberikan breakdown nutrisi
+- 🍽️ **Merencanakan menu harian otomatis** berdasarkan profil & target kalori
+- 💧 **Memantau hidrasi & active burn** dari sinkronisasi fitness device
+- 🤖 **Memberikan rekomendasi AI** sesuai bahan yang tersedia di dapur
+- 📊 **Tracking real-time** dengan visualisasi tren makro mingguan
 
-### 4. Effortless Logging with AI (Snap)
-A powerful computer vision tool to log your food effortlessly.
-- **Live Camera & Gallery Upload**: Record a meal by taking a photo or uploading an image.
-- **AI Nutritional Breakdown**: The AI analyzes the image to identify the meal and provide a complete nutritional breakdown, including calories, macros, a health score, ingredients, an "Expert Insight," and an allergen warning.
-- **Update Existing Meals**: You can use the Snap feature to update a planned meal with a photo, automatically logging its consumption and updating its nutritional data with the AI's analysis.
+---
 
-### 5. Discovering New Options (Explore Hub)
-Discover new meal options and generate complete meal plans with powerful AI tools.
-- **ML Curation (Delivery Hub)**: Get personalized meal recommendations from popular food delivery services. The AI acts as a scoring engine, ranking options based on your health profile and calorie targets.
-- **Recipe From Pantry**: List the ingredients you have, and the AI will generate creative meal ideas and full recipes. You can then schedule these meals for any date and time.
-- **Predictive Path (AI Meal Plan)**: Let the AI generate a complete, balanced meal plan (breakfast, lunch, dinner) for any day, tailored to your calorie and macro targets. Each meal comes with a full recipe and a "swap suggestion" for variety.
+## ✨ Fitur Utama
 
-### 6. Managing Your Profile & Fitness
-- **User Profile**: A central place to view and edit your biometric data, dietary restrictions, and allergies. Changes here will immediately update your AI recommendations and calorie targets.
-- **Fitness Sync**: This page simulates syncing with wearables like an Apple Watch. It provides a visual overview of connected devices and your weekly activity trends. The data here directly influences the "Active Burn" value on your dashboard.
+### 🔐 1. Secure Login & Onboarding
+- One-click sign-in (simulasi Google login)
+- Setup biometrik: gender, umur, berat, tinggi
+- Auto-kalkulasi **BMI** dengan kategorisasi (Ideal, Overweight, dll)
+- Konfigurasi **health markers** & **food allergies**
 
-### 7. Secure Logout
-- From the profile page, you can securely sign out of your account. This will return you to the login screen.
+### 📊 2. Dashboard (Today)
+Command center harian dengan:
+- **Energy Balance & Macro Tracking** — Progress kalori vs target (protein/karbo/lemak)
+- **Hydration & Active Burn** — Log air minum + monitor kalori terbakar
+- **Weekly Macro Trends** — Visualisasi tren 7 hari
+- **Daily Food Record** — Log meal lengkap dengan AI insight & health score
 
-## Tech Stack & Architecture
+### 📅 3. Meal Planner
+- Penjadwalan menu harian (advance planning)
+- Tambah meal manual atau biarkan **AI auto-calculate** nutrisi
+- Lihat full recipe dengan step-by-step instructions
 
-- **Frontend**: Next.js 15 (Turbopack), React 19, Tailwind CSS, and ShadCN UI for a responsive, modern, and component-based interface.
-- **Backend & Database**: Supabase — PostgreSQL database with real-time subscriptions and Supabase Auth for anonymous user management.
-- **AI Integration**: Google's Genkit framework powers all generative AI features (Gemini 2.5 Flash), with a 4-key rotation system in place for reliability and to manage API rate limits.
-- **State Management**: Custom React hooks (`useProfile`, `useDailyLog`, `useMeals`, `useDailyLogs`) backed by Supabase real-time channels for live data sync.
-- **Security**: Row-level data access enforced at the Supabase layer. Environment variables separate public and server-side credentials.
+### 📸 4. Snap — AI Food Recognition
+- Foto makanan via kamera/galeri
+- AI breakdown otomatis: kalori, makro, health score, ingredients
+- **Expert Insight** & **allergen warning**
+- Update meal yang sudah dijadwalkan dengan foto baru
+
+### 🔍 5. Explore Hub
+- **ML Curation (Delivery Hub)** — Rekomendasi makanan dari layanan delivery (di-score AI sesuai profil)
+- **Recipe From Pantry** — Input bahan yang tersedia → AI generate resep kreatif
+- **Predictive Path (AI Meal Plan)** — AI buat full meal plan harian + swap suggestions
+
+### 👤 6. Profile & Fitness Sync
+- Edit biometrik & dietary preferences (langsung update rekomendasi AI)
+- Sinkronisasi dengan wearable (mock Apple Watch integration)
+- Visualisasi tren aktivitas mingguan
+
+---
+
+## 🏗️ Arsitektur
+
+```
+┌─────────────────────────────────────────────┐
+│   Frontend (Next.js 15 + React 19)          │
+│   ├─ App Router + Server Components         │
+│   ├─ Tailwind CSS + ShadCN UI               │
+│   └─ Custom Hooks (useProfile, useMeals...) │
+└───────────────┬─────────────────────────────┘
+                │
+        ┌───────┴────────┐
+        ▼                ▼
+┌──────────────┐   ┌─────────────────────┐
+│  Supabase    │   │  Google Genkit      │
+│  ├─ Postgres │   │  ├─ Gemini 2.5 Flash│
+│  ├─ Auth     │   │  ├─ Vision API      │
+│  └─ Realtime │   │  └─ 4-Key Rotation  │
+└──────────────┘   └─────────────────────┘
+```
+
+---
+
+## 🗂️ Struktur Repository
+
+```
+nutripal-ai/
+│
+├── src/                      # Source code utama
+│   ├── app/                  # Next.js App Router pages
+│   ├── components/           # React components (ShadCN UI)
+│   ├── hooks/                # Custom React hooks
+│   │   ├── useProfile.ts
+│   │   ├── useDailyLog.ts
+│   │   ├── useMeals.ts
+│   │   └── useDailyLogs.ts
+│   ├── lib/                  # Utilities & helpers
+│   └── ai/                   # Genkit AI flows
+│
+├── components.json           # ShadCN UI config
+├── next.config.ts            # Next.js configuration
+├── tailwind.config.ts        # Tailwind CSS config
+├── postcss.config.mjs        # PostCSS config
+├── tsconfig.json             # TypeScript config
+├── package.json              # Dependencies
+└── README.md
+```
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **Framework:** [Next.js 15](https://nextjs.org/) (App Router + Turbopack)
+- **UI Library:** [React 19](https://react.dev/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/) + [ShadCN UI](https://ui.shadcn.com/)
+- **Language:** TypeScript 99.3%
+
+### Backend & Database
+- **BaaS:** [Supabase](https://supabase.com/)
+  - PostgreSQL database
+  - Row-Level Security (RLS) untuk data isolation
+  - Real-time subscriptions
+  - Supabase Auth (anonymous user management)
+
+### AI & Machine Learning
+- **Framework:** [Google Genkit](https://firebase.google.com/docs/genkit)
+- **Model:** Gemini 2.5 Flash (text + vision)
+- **Reliability:** 4-key rotation system untuk handle rate limits
+
+### State Management
+- **Custom React Hooks** dengan Supabase real-time channels
+- Live data sync antar device tanpa refresh manual
+
+---
+
+## ⚙️ Instalasi
+
+### 1. Prasyarat
+
+- **Node.js** 20+ dan npm
+- **Supabase account** (untuk database & auth)
+- **Google AI Studio API keys** (untuk Gemini)
+- Git
+
+### 2. Clone Repository
+
+```bash
+git clone https://github.com/ninditya/nutripal-ai.git
+cd nutripal-ai
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Setup Environment Variables
+
+Buat file `.env.local` di root folder:
+
+```env
+# === Supabase ===
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+
+# === Google Gemini (4-Key Rotation) ===
+GOOGLE_API_KEY_1=your-gemini-api-key-1
+GOOGLE_API_KEY_2=your-gemini-api-key-2
+GOOGLE_API_KEY_3=your-gemini-api-key-3
+GOOGLE_API_KEY_4=your-gemini-api-key-4
+
+# === App Config ===
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
+
+> 💡 **Tip:** Buat 4 API key Gemini gratis di [Google AI Studio](https://aistudio.google.com/) untuk memanfaatkan fitur key rotation.
+
+### 5. Setup Database Supabase
+
+1. Buka [Supabase Dashboard](https://app.supabase.com/)
+2. Buat project baru
+3. Setup tabel untuk: `profiles`, `meals`, `daily_logs`, `food_records`
+4. Aktifkan **Row-Level Security (RLS)** untuk semua tabel
+5. Salin URL & API keys ke `.env.local`
+
+---
+
+## 🚀 Cara Menjalankan
+
+### Development Mode
+
+```bash
+npm run dev
+```
+
+Buka browser:
+```
+http://localhost:3000
+```
+
+### Production Build
+
+```bash
+npm run build
+npm start
+```
+
+---
+
+## 🔐 Security Highlights
+
+- 🛡️ **Row-Level Security (RLS)** — Data isolation di level database Supabase
+- 🔑 **Environment Variables** — Pemisahan strict antara public (`NEXT_PUBLIC_*`) dan server-side credentials
+- 🔄 **API Key Rotation** — 4-key rotation untuk Gemini menghindari rate limit & single point of failure
+- 🚫 **Anonymous Auth** — Demo login tanpa expose data sensitif
+
+---
+
+## 🎯 User Journey
+
+```
+1. Login           →  One-click sign-in (Google mock)
+       ↓
+2. Onboarding      →  Input biometrik + health markers
+       ↓
+3. Dashboard       →  Today's energy balance & macros
+       ↓
+4. Plan Meals      →  Schedule meals (manual or AI auto-calc)
+       ↓
+5. Snap Food       →  Foto → AI breakdown → auto-log
+       ↓
+6. Explore         →  Delivery curation / Pantry recipes / AI meal plan
+       ↓
+7. Profile         →  Edit biometrik & sync wearables
+       ↓
+8. Logout          →  Secure sign out
+```
+
+---
+
+## 🎨 UI Components
+
+Project ini menggunakan **ShadCN UI** — koleksi komponen yang accessible, customizable, dan modern. Komponen yang tersedia di `components.json`:
+
+- 🎴 Cards & Layouts
+- 📋 Forms & Inputs
+- 🎚️ Progress bars & Sliders
+- 🪟 Modals & Dialogs
+- 📊 Charts (untuk macro trends)
+- 🔔 Toasts & Notifications
+
+---
+
+## 🤖 AI Features Deep Dive
+
+### Image-to-Nutrition Pipeline
+```
+Photo Upload → Gemini Vision API → Food Identification →
+Nutrition Database Lookup → Health Score → Allergen Check →
+Expert Insight Generation
+```
+
+### Meal Plan Generation
+```
+User Profile (BMI, allergies, targets) →
+Genkit Flow with Gemini 2.5 Flash →
+Balanced Breakfast + Lunch + Dinner →
+Full Recipe + Swap Alternatives
+```
+
+### Delivery Curation Scoring
+```
+Available Delivery Options →
+Score against User Profile + Daily Targets →
+Ranked Recommendations
+```
+
+---
+
+## 📊 Stats Project
+
+- 🚀 **375+ commits** — Iterasi development aktif
+- 📦 **99.3% TypeScript** — Type-safe end to end
+- ⚡ **Turbopack** — Build & dev server super cepat
+- 🔄 **Real-time sync** — Data update tanpa refresh
+
+---
+
+## 🚢 Deployment
+
+Project Next.js ini siap di-deploy ke berbagai platform:
+
+| Platform        | Kompatibilitas | Catatan                            |
+| --------------- | -------------- | ---------------------------------- |
+| **Vercel**      | ✅ Recommended | Native support, auto-deploy        |
+| **Netlify**     | ✅ Compatible  | Dengan Next.js adapter             |
+| **Railway**     | ✅ Compatible  | Node.js runtime                    |
+| **Self-hosted** | ✅ Compatible  | `npm run build && npm start`       |
+
+### Deploy ke Vercel
+
+1. Push repository ke GitHub
+2. Login ke [Vercel](https://vercel.com/)
+3. Import project → pilih `nutripal-ai`
+4. Tambahkan semua environment variables
+5. Deploy!
+
+---
+
+## 📝 Catatan Penting
+
+- 🔥 Project ini menggunakan **Next.js 15 App Router** — pastikan familiar dengan Server/Client Components.
+- 🤖 Fitur AI memerlukan **Gemini API keys** — gratis tier sudah cukup untuk testing.
+- 🗄️ Data Supabase memerlukan **RLS yang benar** agar isolasi user-level berfungsi.
+- 📸 Fitur Snap (food recognition) membutuhkan **kamera permission** di browser.
+- 🔄 Real-time channels Supabase akan auto-reconnect saat koneksi terputus.
+
+---
+
+## 📄 Lisensi
+
+Project ini bersifat private/educational.
+
+---
+
+## 👤 Author
+
+**ninditya**
+- GitHub: [@ninditya](https://github.com/ninditya)
+
+---
+
+<p align="center">
+  🥗 Built with care for healthier living, powered by AI
+</p>
