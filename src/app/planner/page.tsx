@@ -137,16 +137,15 @@ export default function ExplorePage() {
   const { data: profile } = useProfile(user?.uid)
 
   const handleCurateDelivery = async () => {
-    if (!profile) return;
     setLoading(true)
     setDeliveryResult(null)
     try {
       const result = await curateMealSuggestions({
         userProfile: {
-          bmiCategory: profile.bmiCategory,
-          dietaryRestrictions: profile.dietaryRestrictions,
-          allergies: profile.allergies,
-          calorieTarget: profile.calorieTarget
+          bmiCategory: profile?.bmiCategory,
+          dietaryRestrictions: profile?.dietaryRestrictions,
+          allergies: profile?.allergies,
+          calorieTarget: profile?.calorieTarget ?? 2000
         },
         scrapedDatabase: SCRAPED_DATABASE
       });
@@ -160,22 +159,21 @@ export default function ExplorePage() {
   }
 
   const handleGenerateMenu = async (isRecovery = false) => {
-    if (!profile) return;
     setLoading(true)
     setMenuPlan(null)
     setSwappedMeals({ breakfast: false, lunch: false, dinner: false })
     try {
-       const dietTypeParts = [
-        ...(profile.dietaryRestrictions || []),
+      const dietTypeParts = [
+        ...(profile?.dietaryRestrictions || []),
         ...(isRecovery ? ['High Protein'] : [])
       ];
       const plan = await generateDailyPlan({
-        calorieTarget: (profile.calorieTarget || 2000) + (isRecovery ? 300 : 0),
+        calorieTarget: (profile?.calorieTarget ?? 2000) + (isRecovery ? 300 : 0),
         proteinPercent: isRecovery ? 40 : 30,
         carbsPercent: 40,
         fatPercent: isRecovery ? 20 : 30,
         dietType: dietTypeParts.join(", "),
-        allergies: profile.allergies
+        allergies: profile?.allergies
       });
       setMenuPlan(plan);
     } catch (err: any) {
