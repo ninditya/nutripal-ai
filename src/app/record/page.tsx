@@ -1,7 +1,7 @@
 
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, Suspense } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -28,7 +28,7 @@ import { analyzeMeal, type AnalyzeMealOutput } from "@/ai/flows/analyze-meal"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 
-export default function RecordPage() {
+function RecordPageContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const updateId = searchParams.get('updateId')
@@ -405,5 +405,13 @@ export default function RecordPage() {
       )}
       <canvas ref={canvasRef} className="hidden" />
     </div>
+  )
+}
+
+export default function RecordPage() {
+  return (
+    <Suspense>
+      <RecordPageContent />
+    </Suspense>
   )
 }
